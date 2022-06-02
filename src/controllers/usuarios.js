@@ -1,7 +1,7 @@
 const Usuarios = require("../models/usuarios");
 
 module.exports = (app) => {
-  app.get("/usuarios", (req, res, next) => {
+  app.get("/usuarios", (_req, res, next) => {
     Usuarios.listar()
       .then((resultados) => res.json(resultados))
       .catch((erros) => next(erros));
@@ -11,7 +11,7 @@ module.exports = (app) => {
     const id = parseInt(req.params.id);
     Usuarios.buscarPorId(id)
       .then((resultado) => {
-        if (resultado) {
+        if (resultado.length) {
           res.json(resultado);
         } else {
           res.status(404).end();
