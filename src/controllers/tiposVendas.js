@@ -11,7 +11,7 @@ module.exports = (app) => {
     const id = parseInt(req.params.id);
     TiposVendas.buscarPorId(id)
       .then((resultado) => {
-        if (resultado.length > 1) {
+        if (resultado) {
           res.json(resultado);
         } else {
           res.status(404).end();
@@ -31,13 +31,7 @@ module.exports = (app) => {
     const id = parseInt(req.params.id);
     const valores = req.body;
     TiposVendas.alterar(valores, id)
-      .then((resultado) => {
-        if (resultado.length > 1) {
-          res.json(resultado);
-        } else {
-          res.status(404).end();
-        }
-      })
+      .then((resultado) => res.json(resultado))
       .catch((erros) => next(erros));
   });
 

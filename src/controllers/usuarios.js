@@ -11,7 +11,7 @@ module.exports = (app) => {
     const id = parseInt(req.params.id);
     Usuarios.buscarPorId(id)
       .then((resultado) => {
-        if (resultado.length > 1) {
+        if (resultado) {
           res.json(resultado);
         } else {
           res.status(404).end();
