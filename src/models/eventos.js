@@ -39,9 +39,8 @@ class Eventos {
     const dataInicioFormatada = moment(dataInicio).format("YYYY-MM-DD");
     const dataFimFormatada = moment(dataFim).format("YYYY-MM-DD");
 
-    const dataEhValida = moment(dataInicioFormatada).isSameOrAfter(dataCriacao) && moment(dataFimFormatada).isSameOrAfter(dataInicioFormatada);
+    return moment(dataInicioFormatada).isSameOrAfter(dataCriacao) && moment(dataFimFormatada).isSameOrAfter(dataInicioFormatada);
 
-    return dataEhValida;
   }
   listarPorStatus(status) {
     if (status === STATUS_AGENDADO) {

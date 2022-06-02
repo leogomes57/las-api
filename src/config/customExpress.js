@@ -15,14 +15,14 @@ module.exports = () => {
   app.use("/api-docs", swaggerUi.serve);
   app.get("/api-docs", swaggerUi.setup(swaggerConfig));
 
-  app.get("/", (req, res) => {
+  app.get("/", (_req, res) => {
     res.send("Bem vindo ao las-api");
   });
 
   consign().include("src/controllers").into(app);
 
   // eslint-disable-next-line no-unused-vars
-  app.use((err, req, res, next) => {
+  app.use((err, _req, res, _next) => {
     if (err.erroApp) {
       res.status(400).send(err.erroApp);
     } else if (ENV !== "production") {
